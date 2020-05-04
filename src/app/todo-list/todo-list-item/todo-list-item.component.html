@@ -1,6 +1,6 @@
 <div class="todo-list-item">
     <div class="todo-list-item__title"> {{ todo["text"]}} </div>
-    <div>Status: {{todo["status"]}}</div>
+    <div [ngClass]="getClass(todo.status)" class="todo-item-status">{{todo["status"]}}</div>
     <div class="todo-list-item__buttons">
         <div class="todo-list-item__edit-btn"> EDIT </div>
         <div class="todo-list-item__delete-btn" (click)="handleDeleteClicked(index)"> DELETE </div>

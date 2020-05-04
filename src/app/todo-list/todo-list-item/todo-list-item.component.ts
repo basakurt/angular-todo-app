@@ -10,6 +10,15 @@ export class TodoListItemComponent implements OnInit {
     @Input('todo-list') todoList: todoItem[]
     @Input('index') index: number;
 
+    public getClass(status: string) {
+        let classnames = {
+            "TODO": "list-item_todo",
+            "IN-PROGRESS": "list-item_in-progress",
+            "DONE": "list-item_done"
+        }
+        console.log(classnames[status])
+        return classnames[status]
+    }
     public handleDeleteClicked(index: number) {
         this.todoList.splice(index, 1)
     }

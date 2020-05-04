@@ -1,7 +1,6 @@
 .todo-list-item {
     display: grid;
-    grid-template-rows: 2fr 1fr 2fr;
-
+    grid-template-rows: 1fr 1fr 2fr;
     padding: 20px;
     border: 2px solid #ffba9b;
     border-radius: 10px;
@@ -31,5 +30,25 @@
     }
     &__delete-btn {
         background-color: rgb(116, 116, 116);
+    }
+
+    /* status */
+    .todo-item-status {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ffffff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: 500;
+    }
+    .list-item_todo {
+        background-color: #216785;
+    }
+    .list-item_in-progress {
+        background-color: #53b992;
+    }
+    .list-item_done {
+        background-color: #d57f58;
     }
 }

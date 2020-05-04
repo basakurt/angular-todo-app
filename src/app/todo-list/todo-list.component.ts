@@ -21,6 +21,10 @@ export class TodoListComponent implements OnInit {
       status: "TODO"
     },
     {
+      text: "Clean the house",
+      status: "IN-PROGRESS"
+    },
+    {
       text: "40 minutes pilates",
       status: "DONE"
     }
