@@ -1,8 +1,23 @@
 .header-todo-list {
-    font-family: fantasy;
-    text-align: center;
-    font-size: 3rem;
-    background: rgb(18, 57, 65);
-    color: white;
+    font-size: 4rem;
+    font-weight: 500;
+    color: #ffffff;
+    background:url('../../assets/icons/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     padding: 10px;
+    height: 250px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    text-shadow: 2px 2px #ffba9b;
+}
+
+.todo-list-container {
+    display: grid;
+    padding: 10px 0;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-rows: auto;
 }

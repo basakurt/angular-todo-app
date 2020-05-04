@@ -1,6 +1,6 @@
-<header class="header-todo-list">TO-DO List</header>
-<app-todo-list-add-item></app-todo-list-add-item>
-<app-todo-list-item></app-todo-list-item>
-<app-todo-list-item></app-todo-list-item>
-<app-todo-list-item></app-todo-list-item>
-<app-todo-list-item></app-todo-list-item>
+<header class="header-todo-list"><span>TO-DO List</span></header>
+<app-todo-list-add-item [todo-list]="todoList"></app-todo-list-add-item>
+<div class="todo-list-container">
+    <app-todo-list-item *ngFor="let item of todoList; let i=index;" [todo]=" item" [todo-list]="todoList"
+        [index]="i"></app-todo-list-item>
+</div>

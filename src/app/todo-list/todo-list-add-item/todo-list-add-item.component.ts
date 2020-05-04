@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { todoItem } from '../todo-list.component'
 
 @Component({
     selector: 'app-todo-list-add-item',
@@ -6,8 +7,22 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./todo-list-add-item.component.scss']
 })
 export class TodoListAddItemComponent implements OnInit {
-    constructor() { }
+    @Input("todo-list") todoList: todoItem[]
 
+    public newTodo = '';
+
+    public onAddTodoClick() {
+        if (this.newTodo) {
+            this.todoList.push(
+                {
+                    text: this.newTodo,
+                    status: "TODO"
+
+                }
+            )
+            this.newTodo = ''
+        }
+    }
     ngOnInit() {
     }
 

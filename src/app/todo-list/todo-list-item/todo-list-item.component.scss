@@ -1,5 +1,33 @@
-.todo-list-item_container {
-    font-family: fantasy;
-    display: flex;
+.todo-list-item {
+    display: grid;
     padding: 20px;
+    border: 2px solid #ffba9b;
+    border-radius: 10px;
+    word-break: break-word;
+    height: 200px;
+    &__title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #ffba9b;
+    }
+    &__buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    &__edit-btn,
+    &__delete-btn {
+        text-align: center;
+        align-self: end;
+        margin: 0 5px;
+        border-radius: 5px;
+        padding: 5px 10px;
+        color: #ffffff;
+        cursor: pointer;
+    }
+    &__edit-btn {
+        background-color: #7d9eac;
+    }
+    &__delete-btn {
+        background-color: rgb(116, 116, 116);
+    }
 }
