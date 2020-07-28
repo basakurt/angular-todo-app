@@ -1,0 +1,47 @@
+.edit-modal-container {
+  width: 100%; 
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  padding-top: 100px;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  .edit-modal-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+  .edit-modal-content {
+    width: 500px;
+    height: 200px;
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+    border: 2px solid #ffba9b;
+    border-radius: 10px;
+    padding: 20px;
+    display: grid;
+    .edit-description {
+      &-input {
+        border-width: 1px;
+        box-sizing: border-box;
+        width: 100%;
+        height: 50px;
+      }
+    }
+    .edit-tag {
+      &-select {
+        width: 100%;
+        height: 50px;
+      }
+    }
+    .update-btn {
+      background-color: #ffba9b;
+    }
+  }
+}
+
+

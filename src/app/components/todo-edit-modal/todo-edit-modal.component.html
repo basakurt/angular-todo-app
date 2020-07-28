@@ -1,0 +1,17 @@
+<div class="edit-modal-container">
+  <div class="edit-modal-overlay" (click)="handleModalOutsideClicked()"></div>
+  <div class="edit-modal-content">
+    <div class="edit-description">
+      <input type="text" class="edit-description-input" />
+    </div>  
+    <div class="edit-tag">
+      <select name="status" id="status" class="edit-tag-select">
+        <option *ngFor="let item of todoStatus; let i=index;" value="index"> 
+          {{item}}
+        </option>
+      </select>
+    </div>
+    <div class="button update-btn">UPDATE</div>
+  </div>
+</div>
+

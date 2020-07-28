@@ -3,3 +3,17 @@
 body {
     margin: 3px;
 }
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+input {
+    padding: 0;
+}
