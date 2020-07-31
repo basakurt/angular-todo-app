@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { todoItem } from '../todo-list.component';
-import { handleEditModal } from '../../../reducers/modal.reducer';
+import { Todo } from '../../../models/todo.model';
 import { Store, select } from '@ngrx/store';
+import * as TodoActions from '../../../actions/todo.actions';
+import * as TodoModalActions from '../../../actions/todo-modal.actions';
+import { AppState } from 'src/app/app.state';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,20 +12,12 @@ import { Observable } from 'rxjs';
     styleUrls: ['./todo-list-item.component.scss']
 })
 export class TodoListItemComponent implements OnInit {
-    @Input('todo') todo: todoItem
-    @Input('todo-list') todoList: todoItem[]
+    @Input('todo') todo: Todo
     @Input('index') index: number;
 
-    isEditTodoOpen$: Observable<boolean>;
-    isEditTodoOpen: boolean;
+    constructor(private store: Store<AppState>) {}
 
-    constructor(private store: Store<{ isEditTodoOpen: boolean }>) {
-        this.isEditTodoOpen$ = store.pipe(select('isEditTodoOpen'));
-    }
-
-    ngOnInit() {
-        this.isEditTodoOpen$.subscribe(isEditTodoOpen => this.isEditTodoOpen = isEditTodoOpen);
-    }
+    ngOnInit() {}
 
     public getClass(status: string) {
         let classnames = {
@@ -34,12 +28,11 @@ export class TodoListItemComponent implements OnInit {
         return classnames[status]
     }
 
-    handleDeleteClicked(index: number): void {
-        this.todoList.splice(index, 1)
+    handleDeleteClicked(): void {
+        this.store.dispatch(new TodoActions.RemoveTodo(this.index) )
     }
 
-    handleEditClicked (index: number): void {
-        const todoItem = this.todoList[index];
-        this.store.dispatch(handleEditModal()); 
+    handleEditClicked (): void {
+        this.store.dispatch(new TodoModalActions.HandleTodoModal(this.todo)); 
     }
 }

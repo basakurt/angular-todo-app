@@ -2,7 +2,7 @@
   <div class="edit-modal-overlay" (click)="handleModalOutsideClicked()"></div>
   <div class="edit-modal-content">
     <div class="edit-description">
-      <input type="text" class="edit-description-input" />
+      <input type="text" class="edit-description-input" [value]="selectedTodoText | async"/>
     </div>  
     <div class="edit-tag">
       <select name="status" id="status" class="edit-tag-select">
@@ -11,7 +11,7 @@
         </option>
       </select>
     </div>
-    <div class="button update-btn">UPDATE</div>
+    <div class="button update-btn" (click)="handleUpdateClicked()">UPDATE</div>
   </div>
 </div>
 

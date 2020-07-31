@@ -6,15 +6,14 @@ import {
   MetaReducer
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
-import { modalReducer } from './modal.reducer';
+import { AppState } from '../app.state';
+import { todoReducer } from './todo.reducer';
+import { todoModalReducer } from './todo-modal.reducer';
 
-export interface State {
-
-}
-
-export const reducers: ActionReducerMap<State> = {
-  isEditTodoOpen: modalReducer
+export const reducers: ActionReducerMap<AppState> = {
+  todoList: todoReducer,
+  todoModal: todoModalReducer
 };
 
 
-export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
+export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];

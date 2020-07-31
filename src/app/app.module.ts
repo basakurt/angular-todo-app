@@ -9,7 +9,7 @@ import { TodoListAddItemComponent } from './components/todo-list/todo-list-add-i
 import { TodoEditModalComponent } from './components/todo-edit-modal/todo-edit-modal.component';
 
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
+import { reducers } from './reducers';
 
 @NgModule({
   declarations: [

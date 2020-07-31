@@ -1,7 +1,10 @@
 <header class="header-todo-list"><span>TO-DO List</span></header>
-<app-todo-list-add-item [todo-list]="todoList"></app-todo-list-add-item>
+<app-todo-list-add-item></app-todo-list-add-item>
 <div class="todo-list-container">
-    <app-todo-list-item *ngFor="let item of todoList; let i=index;" [todo]="item" [todo-list]="todoList"
-        [index]="i"></app-todo-list-item>
+    <app-todo-list-item 
+        *ngFor="let item of todoList | async; let i=index;" 
+        [todo]="item" 
+        [index]="i">
+    </app-todo-list-item>
 </div>
-<app-todo-edit-modal *ngIf="isEditTodoOpen$ | async"></app-todo-edit-modal>
+<app-todo-edit-modal *ngIf="todoModalStatus | async"></app-todo-edit-modal>

@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { TODO_STATUS } from '../../enums/todo-status';
-
-export interface todoItem {
-  text: string,
-  status: string
-};
+import { Todo } from '../../models/todo.model';
+import { AppState } from '../../app.state';
+import { TodoModalState } from 'src/app/reducers/todo-modal.reducer';
 
 @Component({
   selector: 'app-todo-list',
@@ -14,30 +11,17 @@ export interface todoItem {
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent implements OnInit {
-  public todoList: todoItem[] = [
-    {
-      text: "Read a book",
-      status: TODO_STATUS.TODO
-    },
-    {
-      text: "Feed & love Sisi",
-      status: TODO_STATUS.TODO
-    },
-    {
-      text: "Clean the house",
-      status: TODO_STATUS.IN_PROGRESS
-    },
-    {
-      text: "40 minutes pilates",
-      status: TODO_STATUS.DONE
-    }
-  ]
 
-  isEditTodoOpen$: Observable<boolean>;
+  todoList: Observable<Todo[]>;
+  todoModal: Observable<TodoModalState>;
+  todoModalStatus: Observable<boolean>;
 
-  constructor(private store: Store<{ isEditTodoOpen: boolean }>) {
-    this.isEditTodoOpen$ = store.pipe(select('isEditTodoOpen'));
+  constructor(private store: Store<AppState>) {
+    this.todoList = store.select('todoList');
+    this.todoModal = store.select('todoModal');
+    this.todoModalStatus = this.store.select(state => state.todoModal.todoModalStatus);
   }
+
   ngOnInit() {
   }
 }

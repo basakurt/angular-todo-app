@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { todoItem } from '../todo-list.component'
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../app.state';
+import * as TodoActions from '../../../actions/todo.actions';
+import { TODO_STATUS } from '../../../enums/todo-status';
 
 @Component({
     selector: 'app-todo-list-add-item',
@@ -7,23 +10,23 @@ import { todoItem } from '../todo-list.component'
     styleUrls: ['./todo-list-add-item.component.scss']
 })
 export class TodoListAddItemComponent implements OnInit {
-    @Input("todo-list") todoList: todoItem[]
+    constructor(private store: Store<AppState>) {}
 
     public newTodo = '';
 
-    public onAddTodoClick() {
+    public handleAddClicked() {
         if (this.newTodo) {
-            this.todoList.push(
-                {
-                    text: this.newTodo,
-                    status: "TODO"
-
-                }
-            )
+            this.addTodo(this.newTodo)
             this.newTodo = ''
         }
     }
-    ngOnInit() {
+
+    addTodo(text: string) {
+        this.store.dispatch(new TodoActions.AddTodo(
+            {text: text, status: TODO_STATUS.TODO}
+        ))
     }
 
+    ngOnInit() {
+    }
 }
