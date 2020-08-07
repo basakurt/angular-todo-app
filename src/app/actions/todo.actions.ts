@@ -17,10 +17,15 @@ export class RemoveTodo implements Action {
     constructor(public payload: number) {}
 }
 
+interface UpdateTodoPayload {
+  todo: Todo,
+  index: number
+}
+
 export class UpdateTodo implements Action {
   readonly type = UPDATE_TODO
-
-  constructor(public payload: Todo) {}
+ 
+  constructor(public payload: UpdateTodoPayload) {}
 }
 
 export type Actions = AddTodo | RemoveTodo | UpdateTodo 

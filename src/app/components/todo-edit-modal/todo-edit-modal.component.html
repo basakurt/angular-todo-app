@@ -2,11 +2,15 @@
   <div class="edit-modal-overlay" (click)="handleModalOutsideClicked()"></div>
   <div class="edit-modal-content">
     <div class="edit-description">
-      <input type="text" class="edit-description-input" [value]="selectedTodoText | async"/>
+      <input 
+        type="text" 
+        class="edit-description-input" 
+        [(ngModel)]="updatedTodo"
+        (keyup.enter)="handleUpdateClicked()"/>
     </div>  
     <div class="edit-tag">
-      <select name="status" id="status" class="edit-tag-select">
-        <option *ngFor="let item of todoStatus; let i=index;" value="index"> 
+      <select name="status" id="status" class="edit-tag-select" [(ngModel)]="updatedTodoStatus">
+        <option *ngFor="let item of todoStatus; let i=index;"> 
           {{item}}
         </option>
       </select>

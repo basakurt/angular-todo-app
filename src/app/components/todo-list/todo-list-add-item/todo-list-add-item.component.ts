@@ -27,6 +27,5 @@ export class TodoListAddItemComponent implements OnInit {
         ))
     }
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
 }

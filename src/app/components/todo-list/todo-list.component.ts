@@ -22,6 +22,5 @@ export class TodoListComponent implements OnInit {
     this.todoModalStatus = this.store.select(state => state.todoModal.todoModalStatus);
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

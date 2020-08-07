@@ -33,6 +33,11 @@ export class TodoListItemComponent implements OnInit {
     }
 
     handleEditClicked (): void {
-        this.store.dispatch(new TodoModalActions.HandleTodoModal(this.todo)); 
+        this.store.dispatch(new TodoModalActions.HandleTodoModal(
+           {
+               todo: this.todo,
+               index: this.index
+            }
+        )); 
     }
 }

@@ -33,7 +33,15 @@ export function todoReducer(state: Todo [] = initialState, action: TodoActions.A
         case TodoActions.REMOVE_TODO: 
           const index = action.payload
           return [...state.slice(0, index), ...state.slice(index + 1)];
-          
+
+        case TodoActions.UPDATE_TODO:
+          const todoIndex = action.payload.index;
+          return [
+            ...state.slice(0, todoIndex),
+            Object.assign({}, state[todoIndex], action.payload.todo),
+            ...state.slice(todoIndex + 1),
+          ];
+
         default:
           return state;
     }

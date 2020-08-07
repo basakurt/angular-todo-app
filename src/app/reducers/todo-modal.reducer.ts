@@ -3,11 +3,13 @@ import { Todo } from '../models/todo.model';
 
 export interface TodoModalState {
   todoModalStatus: boolean
-  selectedTodo: Todo
+  selectedTodo: Todo,
+  selectedTodoIndex: number
 }
 const initialState: TodoModalState = {
   todoModalStatus: false,
-  selectedTodo: null
+  selectedTodo: null,
+  selectedTodoIndex: null
 };
 
 export function todoModalReducer(state: TodoModalState = initialState, action: TodoModalActions.Actions) {
@@ -16,7 +18,8 @@ export function todoModalReducer(state: TodoModalState = initialState, action: T
         return {
           ...state,
           todoModalStatus: !state.todoModalStatus,
-          selectedTodo: action.payload
+          selectedTodo: action.payload.todo,
+          selectedTodoIndex: action.payload.index
         }
 
       default:
